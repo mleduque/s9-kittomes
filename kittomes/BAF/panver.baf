@@ -1,0 +1,7 @@
+IF
+	Global("S9AddPanver","%FriendlyArmInn%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("S9PANVER",[2879.2245],0)
+        SetGlobal("S9AddPanver","%FriendlyArmInn%",1)
+END

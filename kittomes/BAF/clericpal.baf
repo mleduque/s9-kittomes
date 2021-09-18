@@ -1,0 +1,8 @@
+IF
+	Global("S9AddPally","%Temple%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("S9WALORI",[754.1618],12)
+		CreateCreature("S9KEVIAN",[803.1623],4)
+		SetGlobal("S9AddPally","%Temple%",1)
+END

@@ -1,0 +1,7 @@
+IF
+	Global("S9AddMage","%HighHedge%",0)
+THEN
+	RESPONSE #100
+		SetGlobal("S9AddMage","%HighHedge%",1)	
+		CreateCreature("S9JAMDAK",[1850.2485],0)
+END

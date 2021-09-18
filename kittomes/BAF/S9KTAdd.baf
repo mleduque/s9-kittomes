@@ -1,0 +1,317 @@
+//BERSERKER
+IF
+	Global("S9KITTOM","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(BERSERKER))  
+    SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//WIZARDSLAYER
+IF
+	Global("S9KITTOM","GLOBAL",2)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(WIZARDSLAYER))    
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//KENSAI
+IF
+	Global("S9KITTOM","GLOBAL",3)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(KENSAI))   
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//CAVALIER
+IF
+	Global("S9KITTOM","GLOBAL",4)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(CAVALIER))    
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//INQUISITOR
+IF
+	Global("S9KITTOM","GLOBAL",5)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(INQUISITOR))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//UNDEADHUNTER
+IF
+	Global("S9KITTOM","GLOBAL",6)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(UNDEADHUNTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//FERALAN
+//aka Archer
+IF
+	Global("S9KITTOM","GLOBAL",7)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(FERALAN))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END 
+ 
+//STALKER
+IF
+	Global("S9KITTOM","GLOBAL",8)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(STALKER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//BEASTMASTER
+IF
+	Global("S9KITTOM","GLOBAL",9)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(BEASTMASTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//ASSASIN
+IF
+	Global("S9KITTOM","GLOBAL",10)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(ASSASIN))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//BOUNTYHUNTER
+IF
+	Global("S9KITTOM","GLOBAL",11)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(BOUNTYHUNTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//SWASHBUCKLER
+IF
+	Global("S9KITTOM","GLOBAL",12)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(SWASHBUCKLER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//BLADE
+IF
+	Global("S9KITTOM","GLOBAL",13)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(BLADE))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//JESTER
+IF
+	Global("S9KITTOM","GLOBAL",14)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(JESTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//SKALD
+IF
+	Global("S9KITTOM","GLOBAL",15)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(SKALD))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//TOTEMIC
+IF
+	Global("S9KITTOM","GLOBAL",16)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(TOTEMIC))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//SHAPESHIFTER
+IF
+	Global("S9KITTOM","GLOBAL",17)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(SHAPESHIFTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//BEASTFRIEND aka Avenger
+IF
+	Global("S9KITTOM","GLOBAL",18)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(BEASTFRIEND))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//GODTALOS
+IF
+	Global("S9KITTOM","GLOBAL",19)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(GODTALOS))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//GODHELM
+IF
+	Global("S9KITTOM","GLOBAL",20)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(GODHELM))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//GODLATHANDER
+IF
+	Global("S9KITTOM","GLOBAL",21)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(GODLATHANDER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//MAGESCHOOL_ABJURER
+IF
+	Global("S9KITTOM","GLOBAL",22)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_ABJURER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_CONJURER
+IF
+	Global("S9KITTOM","GLOBAL",23)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_CONJURER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_DIVINER
+IF
+	Global("S9KITTOM","GLOBAL",24)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_DIVINER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_ENCHANTER
+IF
+	Global("S9KITTOM","GLOBAL",25)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_ENCHANTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_ILLUSIONIST
+IF
+	Global("S9KITTOM","GLOBAL",26)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_ILLUSIONIST))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_INVOKER
+IF
+	Global("S9KITTOM","GLOBAL",27)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_INVOKER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_NECROMANCER
+IF
+	Global("S9KITTOM","GLOBAL",28)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_NECROMANCER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+ 
+//MAGESCHOOL_TRANSMUTER
+IF
+	Global("S9KITTOM","GLOBAL",29)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(MAGESCHOOL_TRANSMUTER))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//WILDMAGE
+IF
+	Global("S9KITTOM","GLOBAL",30)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(0x80000000))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+//BARBARIAN
+IF
+	Global("S9KITTOM","GLOBAL",31)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddKit(0x40000000))
+	SetGlobal("S9KITTOM","GLOBAL",0)
+	DestroySelf()
+END
+
+IF
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

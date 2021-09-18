@@ -1,0 +1,14 @@
+IF
+	Global("S9AddThiefB2","%Beregost_TravenhurstManor_L1%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("S9BUTLER",[623.361],0)
+		SetGlobal("S9AddThiefB2","%Beregost_TravenhurstManor_L1%",1)
+END
+
+IF
+	Global("S9BuyDeed","GLOBAL",2)
+THEN
+	RESPONSE #100
+		ActionOverride("S9BUTLER",DestroySelf())
+END

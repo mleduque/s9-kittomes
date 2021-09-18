@@ -1,0 +1,9 @@
+IF
+	Global("S9Meliquest","GLOBAL",3)
+	Global("S9J2Created","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("S9J2Created","GLOBAL",1)
+		CreateCreature("S9JAMDAK",[312.231],0)
+		ActionOverride("Jamdak",SetNumTimesTalkedTo(2)
+END

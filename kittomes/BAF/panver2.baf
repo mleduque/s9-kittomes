@@ -1,0 +1,7 @@
+IF
+	Global("S9AddPanver","%EBaldursGate_ElfsongTavern_L1%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("S9PANVER",[799.491],0)
+        SetGlobal("S9AddPanver","%EBaldursGate_ElfsongTavern_L1%",1)
+END

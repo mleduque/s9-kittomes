@@ -1,0 +1,6 @@
+IF
+	Global("S9IdolQuest","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("S9IdolQuest","GLOBAL",2)
+END

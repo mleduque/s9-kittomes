@@ -1,0 +1,8 @@
+IF
+	Global("S9AddDruid","%CloakwoodLodge%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("s9vicgol",[1903.948],12)
+		CreateCreature("s9magsti",[1977.960],0)
+		SetGlobal("S9AddDruid","%CloakwoodLodge%",1)
+END

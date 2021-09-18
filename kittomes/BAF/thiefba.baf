@@ -1,0 +1,15 @@
+IF
+	Global("S9AddThiefBa","%CoastWay%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("S9MARTHA",[1722.3564],2)
+		CreateCreature("S9OTI",[1795.3550],1)
+		SetGlobal("S9AddThiefBa","%CoastWay%",1)
+END
+
+IF
+	Global("S9BuyDeed","GLOBAL",2)
+THEN
+	RESPONSE #100
+		ActionOverride("S9OTI",DestroySelf())
+END

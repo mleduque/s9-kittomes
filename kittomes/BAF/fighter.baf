@@ -1,0 +1,8 @@
+IF
+	Global("S9AddFighters","Global",0)
+THEN
+	RESPONSE #100
+		CreateCreature("S9Durin",[4693.2944],0)
+		CreateCreature("S9ZANKAS",[4760.2959],3)
+		SetGlobal("S9AddFighters","Global",1)
+END

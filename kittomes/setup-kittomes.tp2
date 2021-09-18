@@ -1,0 +1,798 @@
+BACKUP ~kittomes/backup~
+AUTHOR ~Smeagolheart~
+VERSION ~v2.0~
+//README ~kittomes/ReadMe.txt~
+
+ALWAYS
+	INCLUDE ~kittomes/lib/always.tpa~
+ 
+// Game platform check; Code from ~CoM_Solaufein @ "http://www.teambg.org"~ & G3 www.gibberlings3.com
+//This assigns variables to work with differences between area names in BGEE, Tutu and BGT                        
+ACTION_IF FILE_EXISTS_IN_GAME ~neera.dlg~ THEN BEGIN  //BGEE
+				PRINT ~BG:EE install detected~
+				INCLUDE ~kittomes/lib/tbgcom_bgee_vars.tpa~
+		END ELSE BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~FW0100.are~ THEN BEGIN //TuTu
+			PRINT ~Tutu install detected.~
+			INCLUDE ~kittomes/lib/g3_tutu_cpmvars.tpa~
+		END ELSE BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~AR7200.are~ THEN BEGIN  //BGT
+		PRINT ~BGT install detected.~
+		INCLUDE ~kittomes/lib/g3_bgt_cpmvars.tpa~
+		END ELSE BEGIN FAIL ~Please install on BG:EE, Tutu or BGT.~
+				END  	//BGEE
+			END			//TuTu
+		END				//BGT
+END
+
+BEGIN ~Kit Tomes for BG:EE, BGT and TuTu~
+    DESIGNATED 0
+//-----------------------------------------------------------------------------------------------------------------------------
+//Effects
+//--------------------------------------------
+COPY ~kittomes/EFF/S9SPWI01.EFF~ ~override/S9SPWI01.EFF~
+
+//Scripts
+//--------------------------------------------
+//Invisibile Creature
+COPY ~kittomes/CRE/S9KTAdd.cre~ ~override~
+COMPILE ~kittomes/BAF/S9KTAdd.baf~ ~override~
+//Dialogues
+COMPILE EVALUATE_BUFFER ~kittomes/dlg~ ~override~
+//--------------------------------------------
+//Create Tomes; adds current descriptions of classes to them
+//====================================================================
+//	STORE 1 ITEMS								  		 		          
+//																	  
+//	Fighters =------------------------------------------------------------------------------------------------
+// Barbarian (fighter kit according to the BG2 engine)
+COPY ~kittomes/itm/s9tome01.itm~ ~override/s9tome31.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Book of the Barbarian~ 
+  SAY DESC #45869
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 31
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Berserker
+COPY ~kittomes/itm/S9tome01.itm~ ~override/S9tome01.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Book of the Berserker~ 
+  SAY DESC #25201
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 1 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Wizard Slayer
+COPY ~kittomes/itm/S9tome01.itm~ ~override/S9tome02.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Book of the Wizard Slayer~
+  SAY DESC #25203
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~ 
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 2 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+  
+//Kensai
+COPY ~kittomes/itm/S9tome01.itm~ ~override/S9tome03.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Book of the Kensai~
+  SAY DESC #25204
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 3 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//	Paladins =------------------------------------------------------------------------------------------------
+// Cavalier
+COPY ~kittomes/itm/S9tome04.itm~ ~override/S9tome04.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Manual of the Cavalier~
+  SAY DESC #25206
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 4
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+// Inquisitor
+COPY ~kittomes/itm/S9tome04.itm~ ~override/S9tome05.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Manual of the Inquisitor~
+  SAY DESC #25207
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 5 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+// Undead Hunter
+COPY ~kittomes/itm/S9tome04.itm~ ~override/S9tome06.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Manual of the Undead Hunter~
+  SAY DESC #25208
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 6 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//	Rangers =------------------------------------------------------------------------------------------------
+// Archer
+COPY ~kittomes/itm/S9tome07.itm~ ~override/S9tome07.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~The Archer's Guide~
+  SAY DESC #25209
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 7
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+// Stalker
+COPY ~kittomes/itm/S9tome07.itm~ ~override/S9tome08.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~The Stalker's Guide~
+  SAY DESC #25211
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 8
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+  
+//Beast Master
+COPY ~kittomes/itm/S9tome07.itm~ ~override/S9tome09.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~The Beast Master's Guide~
+  SAY DESC #25212
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 9
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//	Druids =------------------------------------------------------------------------------------------------
+//Totemic Druid
+COPY ~kittomes/itm/S9tome16.itm~ ~override/S9tome16.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Codex of the Totemic Druid~
+  SAY DESC #25224
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 16
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+// Shapeshifter
+COPY ~kittomes/itm/S9tome16.itm~ ~override/s9tome17.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Codex of the Shapeshifter~
+  SAY DESC #25225
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 17
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Avenger
+COPY ~kittomes/itm/S9tome16.itm~ ~override/s9tome18.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Codex of the Avenger~
+  SAY DESC #25227
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 18 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//	Clerics =------------------------------------------------------------------------------------------------ 
+//Talos
+COPY ~kittomes/itm/s9tome19.itm~ ~override/s9tome19.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~The Priest's Guide to Talos~
+  SAY DESC #25221
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 19
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Helm
+COPY ~kittomes/itm/s9tome19.itm~ ~override/s9tome20.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~The Priest's Guide to Helm~
+  SAY DESC #25222
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 20
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Lathander
+COPY ~kittomes/itm/s9tome19.itm~ ~override/s9tome21.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~The Priest's Guide to Lathander~
+  SAY DESC #25223
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 21 
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//	Mages =------------------------------------------------------------------------------------------------
+//Abjurer
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome22.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Abjurer~
+  SAY DESC #9564
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 22
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Conjurer
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome23.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Conjurer~
+  SAY DESC #9565
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 23
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Diviner
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome24.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Diviner~
+  SAY DESC #9566
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 24
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Enchanter
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome25.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Enchanter~
+  SAY DESC #9567
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 25
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Illusionist
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome26.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Illusionist~
+  SAY DESC #9568
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 26
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Invoker
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome27.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Invoker~
+  SAY DESC #9569
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 27
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Necromancer
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome28.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Necromancer~
+  SAY DESC #9570
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 28
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Transmuter
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome29.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Transmuter~
+  SAY DESC #9571
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 29
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Wildmage
+COPY ~kittomes/itm/s9tome22.itm~ ~override/s9tome30.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Tome of the Wildmage~
+  SAY DESC #54892
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 30
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+
+//====================================================================
+//	STORE 2 ITEMS: These are placed in store #2.                                                           
+//	These classes/kits likely to lead to inconsistent results with skill points and lore points 
+//	Thieves =------------------------------------------------------------------------------------------------
+//Assasin
+COPY ~kittomes/itm/S9tome10.itm~ ~override/S9tome10.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Lexicon of the Assasin~
+  SAY DESC #25213
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 10
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Bounty Hunter
+COPY ~kittomes/itm/S9tome10.itm~ ~override/S9tome11.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Lexicon of the Bounty Hunter~
+  SAY DESC #25215
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 11
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Swashbuckler
+COPY ~kittomes/itm/S9tome10.itm~ ~override/S9tome12.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Lexicon of the Swashbuckler~
+  SAY DESC #25216
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 12
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//	Bards =------------------------------------------------------------------------------------------------
+//Blade
+COPY ~kittomes/itm/S9tome13.itm~ ~override/S9tome13.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Text of the Blade~
+  SAY DESC #25217
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 13
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Jester
+COPY ~kittomes/itm/S9tome13.itm~ ~override/S9tome14.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Text of the Jester~
+  SAY DESC #25219
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 14
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+
+//Skald
+COPY ~kittomes/itm/S9tome13.itm~ ~override/S9tome15.itm~
+  SAY NAME1 #7150 
+  SAY NAME2 ~Text of the Skald~
+  SAY DESC #25220
+  SAY UNIDENTIFIED_DESC #17278
+  SAY 0xde ~Gained new class capabilities permanently~
+  READ_BYTE 0x18 fl //Flags
+  WRITE_BYTE 0x18 (fl BOR 0b00000001) //Unsellable    
+	LPF ADD_ITEM_EFFECT
+INT_VAR
+	opcode = 265
+	target = 1 // 1 is 'self'
+	parameter1 = 15
+	timing = 1 // instant
+STR_VAR
+	resource = S9KITTOM // global variable
+END
+//====================================================================
+//	Additional Items: Quest items and the like									  
+//																	  
+//-----------------------------------------------------------------------------------------------------------------
+COPY ~kittomes/itm/S9DAXE01.itm~ ~override/S9DAXE01.itm~
+  SAY NAME1 ~Durin's Axe~ 
+  SAY NAME2 ~Durin's Axe~
+  SAY DESC #6656
+  SAY UNIDENTIFIED_DESC #6656
+
+COPY ~kittomes/itm/s9deed.itm~ ~override/s9deed.itm~
+  SAY NAME1 ~Deed to Castle Halwater~ 
+  SAY NAME2 ~Deed to Castle Halwater~
+  SAY DESC ~This letter contains the deed to Castle Halwater in distant Featherdale.  All that is required to claim the property is a small deposit of 5,000 gp to be sent to Prince Idjomonai, which will be returned once all of the paperwork is done.~
+//-----------------------------------------------------------------------------------------------------------------  
+//--------------------------------------------
+//Creatures / Actors                         
+//--------------------------------------------
+COPY ~kittomes/bmp~ ~override~
+
+COPY ~kittomes/CRE/s9PANVER.CRE~ ~override/s9PANVER.cre~
+  SAY 0x8 ~Panver~
+  SAY 0xC ~Panver~
+COPY ~kittomes/CRE/s9Durin.CRE~ ~override/S9DURIN.cre~
+  SAY 0x8 ~Durin~
+  SAY 0xC ~Durin~
+COPY ~kittomes/CRE/s9Zankas.CRE~ ~override/S9ZANKAS.cre~
+  SAY 0x8 ~Zankas~
+  SAY 0xC ~Zankas~ 
+COPY ~kittomes/CRE/s9walori.CRE~ ~override/S9WALORI.cre~
+  SAY 0x8 ~Sir Walorin Daleborn~
+  SAY 0xC ~Sir Walorin Daleborn~   
+COPY ~kittomes/CRE/s9kevian.CRE~ ~override/S9KEVIAN.cre~
+  SAY 0x8 ~Lord Kevian Chandler~
+  SAY 0xC ~Lord Kevian Chandler~   
+COPY ~kittomes/CRE/s9vicgol.CRE~ ~override/S9VICGOL.cre~
+  SAY 0x8 ~Vicgold~
+  SAY 0xC ~Vicgold~    
+COPY ~kittomes/CRE/s9magsti.CRE~ ~override/S9MAGSTI.cre~
+  SAY 0x8 ~Magstine~
+  SAY 0xC ~Magstine~
+COPY ~kittomes/CRE/s9Martha.CRE~ ~override/S9MARTHA.cre~
+  SAY 0x8 ~Marthana Shipsail~
+  SAY 0xC ~Marthana Shipsail~
+COPY ~kittomes/CRE/s9Oti.CRE~ ~override/S9OTI.cre~
+  SAY 0x8 ~Lord Oti~
+  SAY 0xC ~Lord Oti~
+COPY ~kittomes/CRE/s9Butler.CRE~ ~override/S9BUTLER.cre~
+  SAY 0x8 ~Butler Travenhurst~
+  SAY 0xC ~Butler Travenhurst~  
+COPY ~kittomes/CRE/S9JAMDAK.CRE~ ~override/S9JAMDAK.cre~
+  SAY 0x8 ~Jamdak~
+  SAY 0xC ~Jamdak~  
+COPY_EXISTING ~sirine.cre~ ~override/S9SIRINE.cre~
+  SAY 0x8 ~Diseased Sirine~
+  SAY 0xC ~Diseased Sirine~
+  ADD_CRE_ITEM ~S9DAXE01.itm~ #0 #0 #0 ~NONE~ ~inv4~
+  WRITE_ASCII PORTRAIT_SMALL ~s9siren~
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Tome Store: Create and populate them                                                                                                  
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+DEFINE_ACTION_FUNCTION patch_sto
+INT_VAR
+	quantity = 1
+BEGIN
+COPY ~kittomes/sto/s9panver.sto~ ~override/s9panver.sto~
+	PATCH_FOR_EACH tome IN s9tome30 s9tome29 s9tome28 s9tome27 s9tome26 s9tome25 s9tome24 s9tome23 s9tome22 s9tome21 s9tome20 s9tome19 s9tome18 s9tome17 s9tome16 s9tome09 s9tome08 s9tome07 s9tome06 s9tome05 s9tome04 s9tome03 s9tome02 s9tome01 s9tome31
+	BEGIN ADD_STORE_ITEM "%tome%" #1 #0 #0 ~IDENTIFIED~ (quantity)
+	END
+//Thief/Bard Tome Store
+COPY ~kittomes/sto/s9panves.sto~ ~override/s9panves.sto~
+	PATCH_FOR_EACH tome IN s9tome15 s9tome14 s9tome13 s9tome12 s9tome11 s9tome10
+	BEGIN ADD_STORE_ITEM "%tome%" #1 #0 #0 ~IDENTIFIED~ (quantity)
+	END
+END
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// OPTIONAL COMPONENTS: Number of items in stock in tome store                                                      
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+BEGIN ~Panver Sells 1 Tome per Kit~ 
+SUBCOMPONENT ~Panver's Merchandise~ 
+REQUIRE_COMPONENT ~setup-kittomes.tp2~ 0 ~You must install the main component before any others. Please exit and
+begin again.~
+	OUTER_SET quantity = 1
+	LAF patch_sto INT_VAR quantity 
+END
+
+BEGIN ~Panver Sells 2 Tomes per Kit~ 
+SUBCOMPONENT ~Panver's Merchandise~
+REQUIRE_COMPONENT ~setup-kittomes.tp2~ 0 ~You must install the main component before any others. Please exit and
+begin again.~
+	OUTER_SET quantity = 2
+	LAF patch_sto INT_VAR quantity 
+END
+
+BEGIN ~Panver Sells 6 Tomes per Kit~ 
+SUBCOMPONENT ~Panver's Merchandise~
+REQUIRE_COMPONENT ~setup-kittomes.tp2~ 0 ~You must install the main component before any others. Please exit and
+begin again.~
+	OUTER_SET quantity = 6
+	LAF patch_sto INT_VAR quantity 
+END
+
+BEGIN ~Panver Sells No Tomes~ 
+SUBCOMPONENT ~Panver's Merchandise~
+REQUIRE_COMPONENT ~setup-kittomes.tp2~ 0 ~You must install the main component before any others. Please exit and
+begin again.~
+	OUTER_SET quantity = 0
+	LAF patch_sto INT_VAR quantity 
+END
+	
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// OPTIONAL COMPONENTS: Tome Locations											       //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+BEGIN ~Merchandise & Quest Rewards-> Panver is in the Elfsong Tavern~
+SUBCOMPONENT ~Tome Locations~
+REQUIRE_COMPONENT ~setup-kittomes.tp2~ 0 ~You must install the main component before any others. Please exit and begin again.~
+	EXTEND_BOTTOM ~centeol.bcs~ ~kittomes/baf/centeol.baf~
+
+	EXTEND_BOTTOM ~%EBaldursGate_ElfsongTavern_L1%.bcs~ ~kittomes/baf/panver2.baf~
+		EVALUATE_BUFFER
+	EXTEND_BOTTOM ~%Beregost%.bcs~ ~kittomes/baf/fighter.baf~	
+		EVALUATE_BUFFER	
+	EXTEND_BOTTOM ~%Temple%.bcs~ ~kittomes/baf/clericpal.baf~
+		EVALUATE_BUFFER	
+	EXTEND_BOTTOM ~%CloakwoodLodge%.bcs~ ~kittomes/baf/druidra.baf~
+		EVALUATE_BUFFER	
+	EXTEND_BOTTOM ~%CloakwoodNestSpiderNest%.bcs~ ~kittomes/baf/centeol.baf~
+		EVALUATE_BUFFER	
+	EXTEND_BOTTOM ~%CoastWay%.bcs~ ~kittomes/baf/thiefba.baf~
+		EVALUATE_BUFFER			
+	EXTEND_BOTTOM ~%Beregost_TravenhurstManor_L1%.bcs~ ~kittomes/baf/thiefba2.baf~
+		EVALUATE_BUFFER	
+	EXTEND_BOTTOM ~%HighHedge%.bcs~ ~kittomes/baf/mage.baf~
+		EVALUATE_BUFFER	
+	EXTEND_BOTTOM ~%HighHedge_ThalanthyrsAbode%.bcs~ ~kittomes/baf/mage2.baf~
+		EVALUATE_BUFFER			
+
+	EXTEND_BOTTOM ~%ArchaeologicalSite_Tomb%.bcs~ ~kittomes/baf/tomb.baf~	
+		EVALUATE_BUFFER		
+		
+	EXTEND_BOTTOM ~%EBaldursGate_ElfsongTavern_L1%.bcs~ ~kittomes/baf/panver2.baf~	
+		EVALUATE_BUFFER
+		
+	EXTEND_BOTTOM ~%ShipwrecksCoast%.bcs~ ~kittomes/baf/sirens.baf~	
+		EVALUATE_BUFFER		
+		
+BEGIN ~Merchandise Only-> Panver is outside the Friendly Arm Inn~
+SUBCOMPONENT ~Tome Locations~
+REQUIRE_COMPONENT ~setup-kittomes.tp2~ 0 ~You must install the main component before any others. Please exit and begin again.~
+	EXTEND_BOTTOM ~%FriendlyArmInn%.bcs~ ~kittomes/baf/panver.baf~
+		EVALUATE_BUFFER

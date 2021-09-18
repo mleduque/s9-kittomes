@@ -1,0 +1,7 @@
+IF
+	Global("S9CentDead","GLOBAL",0)
+	Dead("centeol")
+THEN
+	RESPONSE #100
+		SetGlobal("S9CentDead","GLOBAL",1)
+END

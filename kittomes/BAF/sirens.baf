@@ -1,0 +1,8 @@
+IF
+	Global("S9AddDAxe","%ShipwrecksCoast%",0)
+THEN
+	RESPONSE #100
+		CreateCreature("sirine01",[1101.1844],0)
+		CreateCreature("s9sirine",[1007.1936],10)
+		SetGlobal("S9AddDAxe","%ShipwrecksCoast%",1)
+END
